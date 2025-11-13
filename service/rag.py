@@ -15,7 +15,7 @@ class RAGService:
         self.embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
         self.llm = ChatGroq(
             api_key=os.getenv("GROQ_API_KEY"),
-            model_name="llama3-8b-8192"
+            model_name="llama-3.1-8b-instant"
         )
 
         self.text_splitter = RecursiveCharacterTextSplitter(
