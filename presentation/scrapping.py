@@ -10,11 +10,12 @@ def show():
     with st.form("Scrapping_form"):
         url = st.text_input("URL do site:", placeholder="https://example.com")
         collection_name = st.text_input("Nome da coleção:", placeholder="minha_colecao")
+        limit = st.number_input("Limite do Scrapper", value=30)
         submit_button = st.form_submit_button("Iniciar Scraping")
 
         if submit_button and url and collection_name:
             with st.spinner("Extraindo o conteúdo..."):
-                result = scrapper.scrape_website(url, collection_name)
+                result = scrapper.scrape_website(url, collection_name, limit)
                 if result["success"]:
                     st.success(f"💎{result['files']} arquivos salvos!")
                 else:
